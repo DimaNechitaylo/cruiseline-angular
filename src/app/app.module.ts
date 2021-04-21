@@ -13,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './token-interceptor';
 import { HomeComponent } from './home/home.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     SignUpComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

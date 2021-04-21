@@ -1,10 +1,10 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SignupRequestPayload } from '../sign-up/signup-request.payload';
+import { SignupRequestPayload } from '../../dto/signup-request.payload';
 import { Observable, throwError  } from 'rxjs';
 import { LocalStorageService } from 'ngx-webstorage';
-import { LoginRequestPayload } from '../login/login-request.payload';
-import { LoginResponse } from '../login/login-response.payload';
+import { LoginRequestPayload } from '../../dto/login-request.payload';
+import { LoginResponse } from '../../dto/login-response.payload';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -43,30 +43,26 @@ export class AuthService {
   }
 
   refreshToken() {
-    const refreshTokenPayload = {
-      refreshToken: this.getRefreshToken(),
-      username: this.getUserName()
-    }
     return this.httpClient.post<LoginResponse>('http://localhost:8080/api/auth/refresh/token',
-      refreshTokenPayload)
+      this.refreshTokenPayload)
       .pipe(tap(response => {
-        this.localStorage.store('authenticationToken', response.authenticationToken);
+        this.localStorage.clear('authenticationToken');
+        this.localStorage.clear('expiresAt');
+
+        this.localStorage.store('authenticationToken',
+          response.authenticationToken);
         this.localStorage.store('expiresAt', response.expiresAt);
       }));
   }
 
   logout() {
-  this.httpClient.post('http://localhost:8080/api/auth/logout', this.refreshTokenPayload,
+    this.refreshTokenPayload.refreshToken = this.getRefreshToken();
+    this.refreshTokenPayload.username = this.getUserName();
+    return  this.httpClient.post('http://localhost:8080/api/auth/logout', this.refreshTokenPayload,
     { responseType: 'text' })
     .subscribe(data => {
-      console.log(data);
-    }, error => {
-      throwError(error);
-    })
-  this.localStorage.clear('authenticationToken');
-  this.localStorage.clear('username');
-  this.localStorage.clear('refreshToken');
-  this.localStorage.clear('expiresAt');
+      this.localStorage.clear();
+    });
 }
 
   getJwtToken() {
