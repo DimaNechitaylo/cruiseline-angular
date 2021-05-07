@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SignupRequestPayload } from '../../dto/signup-request.payload';
-import { AuthService } from '../shared/auth.service';
+import { SignupRequestPayload } from '../../../dto/request/signup-request.payload';
+import { AuthService } from '../../../service/shared/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -33,7 +33,6 @@ export class SignUpComponent implements OnInit {
     this.signupRequestPayload.password = this.signupForm.get('password').value;
 
     this.authService.signup(this.signupRequestPayload).subscribe(() => {
-      this.toastr.error('vse norm')
         this.router.navigate(['/login'], { queryParams: { registered: 'true' } });
       }, () => {
         this.toastr.error('Registration Failed! Please try again');
