@@ -1,2 +1,30 @@
-<p>view-cruise works!</p>
-<p>{{cruiseId}}</p>
+<hr/>
+<p>name: {{cruise.name}}</p>
+<p>liner: {{cruise.shipId}}</p>
+<p>available count: {{cruise.availableCount}}</p>
+<p>start: {{cruise.start}}</p>
+<p>finish: {{cruise.finish}}</p>
+<p>ports: {{cruise.portsId}}</p>
+<div *ngIf="order == null">
+  <button type="button" name="button" (click)="requestAnOrder()">RequestAnOrder</button>
+</div>
+
+<div *ngIf="order.status == 'PROCESSING'">
+  wait for confirmation
+</div>
+
+<div *ngIf="order.status == 'WATING_PAYMENT'">
+  <button type="button" name="button" (click)="pay()">pay</button>
+  <button type="button" name="button" (click)="cancel()">cancel</button>
+</div>
+
+
+<div *ngIf="order.status == 'PAID'">
+  PAID
+</div>
+
+<div *ngIf="order.status == 'CANCELED'">
+  CANCELED
+</div>
+
+<hr/>
