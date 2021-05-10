@@ -48,7 +48,8 @@ export class ViewCruiseComponent implements OnInit {
 
   requestAnOrder(){
     this.orderService.requestAnOrder(this.cruiseId).subscribe(data => {
-      this.toastr.success(data);
+      this.getOrderByCruiseId();
+      this.toastr.success('sucssess Request an order');
     }, () => {
       this.toastr.error('Request an order error');
     });
@@ -56,15 +57,17 @@ export class ViewCruiseComponent implements OnInit {
 
   pay(){
     this.orderService.pay(this.order.id).subscribe(data => {
-      this.toastr.success(data);
+      this.order = data;
+      this.toastr.success('order payment error');
     }, () => {
-      this.toastr.error('order payment error');
+      this.toastr.error('sucssess order payment');
     });
   }
 
   cancel(){
     this.orderService.cancel(this.order.id).subscribe(data => {
-      this.toastr.success(data);
+      this.order = data;
+      this.toastr.success('sucssess order cancel');
     }, () => {
       this.toastr.error('order cancel error');
     });

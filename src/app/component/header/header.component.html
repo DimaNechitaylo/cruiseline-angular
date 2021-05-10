@@ -9,11 +9,10 @@
         <div class="flex-grow-1 float-right">
             <div *ngIf="isLoggedIn" ngbDropdown class="float-right">
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button (click)="goToUserProfile()" ngbDropdownItem>Profile</button>
+                    <a routerLink="/profile" class="float-left profile mr-2">Profile</a>
                     <button (click)="logout()" ngbDropdownItem>Logout</button>
                 </div>
-                <button class="userdetails" id="dropdownBasic1" ngbDropdownToggle>
-                    <img class="account-icon" src="https://www.redditstatic.com/avatars/avatar_default_08_D4E815.png">
+                <button routerLink="/profile" class="profile" id="dropdownBasic1" ngbDropdownToggle>
                     {{username}}
                 </button>
             </div>

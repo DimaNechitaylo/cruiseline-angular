@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './token-interceptor';
 import { HomeComponent } from './component/home/home.component';
 import { ViewCruiseComponent } from './component/view-cruise/view-cruise.component';
+import { ProfileComponent } from './component/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ViewCruiseComponent } from './component/view-cruise/view-cruise.compone
     SignUpComponent,
     LoginComponent,
     HomeComponent,
-    ViewCruiseComponent
+    ViewCruiseComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

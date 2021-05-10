@@ -13,16 +13,17 @@ export class OrderService {
   requestAnOrder(cruiseId: number): Observable<string>{
     return this.http.get("http://localhost:8080/order/submit/" + cruiseId, { responseType: 'text' })
   }
+
   getOrderByCruiseId(cruiseId: number): Observable<OrderDTO>{
     return this.http.get<OrderDTO>("http://localhost:8080/order/" + cruiseId)
   }
 
-  pay(cruiseId: number): Observable<string>{
-    return this.http.get("http://localhost:8080/order/pay/" + cruiseId, { responseType: 'text' })
+  pay(cruiseId: number): Observable<OrderDTO>{
+    return this.http.get<OrderDTO>("http://localhost:8080/order/pay/" + cruiseId)
   }
 
-  cancel(cruiseId: number): Observable<string>{
-    return this.http.get("http://localhost:8080/order/cancel/" + cruiseId, { responseType: 'text' })
+  cancel(cruiseId: number): Observable<OrderDTO>{
+    return this.http.get<OrderDTO>("http://localhost:8080/order/cancel/" + cruiseId)
   }
 
 }
