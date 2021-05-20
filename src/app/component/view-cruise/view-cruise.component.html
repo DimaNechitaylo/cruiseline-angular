@@ -13,29 +13,15 @@
   wait for confirmation
 </div>
 
-<div *ngIf="order.status == 'WATING_PAYMENT'">
+<div *ngIf="order.status == 'WATING_PAYMENT'; else elseBlock">
   <button type="button" name="button" (click)="pay()">pay</button>
   <button type="button" name="button" (click)="cancel()">cancel</button>
 </div>
 
-<div *ngIf="order.status == 'DENIED'">
-  DENIED
-</div>
+<ng-template #elseBlock>
+  {{order.status}}
+</ng-template> 
 
-<div *ngIf="order.status == 'PAID'">
-  PAID
-</div>
 
-<div *ngIf="order.status == 'CANCELED'">
-  CANCELED
-</div>
-
-<div *ngIf="order.status == 'STARTED'">
-  STARTED
-</div>
-
-<div *ngIf="order.status == 'FINISHED'">
-  FINISHED
-</div>
 
 <hr/>

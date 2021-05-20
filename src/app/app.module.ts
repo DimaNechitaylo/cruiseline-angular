@@ -15,6 +15,7 @@ import { TokenInterceptor } from './token-interceptor';
 import { HomeComponent } from './component/home/home.component';
 import { ViewCruiseComponent } from './component/view-cruise/view-cruise.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { AdminComponent } from './component/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProfileComponent } from './component/profile/profile.component';
     LoginComponent,
     HomeComponent,
     ViewCruiseComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

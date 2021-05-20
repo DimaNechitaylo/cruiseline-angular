@@ -3,6 +3,6 @@ import { CruiseDTO } from '../dto/cruiseDTO';
 export class OrderDTO {
   id: number;
   userId: number;
-  cruise: CruiseDTO;
+  cruiseDto: CruiseDTO;
   status: string;
 }

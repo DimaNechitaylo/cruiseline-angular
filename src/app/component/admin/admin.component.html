@@ -1,0 +1,25 @@
+<div class="col-md-9">
+<a>Your orders:</a>
+  <div class="row order" *ngFor="let order of orders">
+    <div class="col-md-11">
+      <hr />
+      <div class="order-title">
+        <a class="cruisename" >
+          order id: {{order.id}}
+          <br>
+          cruise name: {{order.cruiseDto.name}}
+          <br>
+          order status: {{order.status}}</a>
+          <br>
+          <div *ngIf="order.status == 'PROCESSING'">
+            <button type="button" name="button" (click)="confirm(order)">confirm</button>
+            <button type="button" name="button" (click)="reject(order)">reject</button>
+          </div>
+          <div *ngIf!="order.status == 'PROCESSING'">
+            {{order.status}}
+          </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+</div>

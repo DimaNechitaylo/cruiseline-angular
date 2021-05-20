@@ -1,11 +1,10 @@
 <div class="col-md-9">
 <a>Your orders:</a>
-  <div class="row order" *ngFor="let cruise of cruises">
+  <div class="row order" *ngFor="let order of orders">
     <div class="col-md-11">
       <hr />
       <div class="order-title">
-        <a class="cruisename" routerLink="/view-cruise/{{cruise.id}}">{{cruise.name}}
-         </a>
+        <a class="cruisename" routerLink="/view-cruise/{{order.cruiseDto.id}}">{{order.cruiseDto.name}}  {{order.status}}</a>
       </div>
       <hr />
     </div>

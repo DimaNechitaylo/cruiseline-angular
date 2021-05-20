@@ -18,10 +18,6 @@ export class CruiseService {
     return this.http.get<Array<CruiseDTO>>('http://localhost:8080/cruise/filter?date='+date+'&minDuration='+minDuration+'&maxDuration='+maxDuration);
   }
 
-  getUserCruises(): Observable<Array<CruiseDTO>>{
-    return this.http.get<Array<CruiseDTO>>("http://localhost:8080/cruise/getUserCruises")
-  }
-
   getCruiseById(id: number): Observable<CruiseDTO> {
     return this.http.get<CruiseDTO>('http://localhost:8080/cruise/'+id);
   }

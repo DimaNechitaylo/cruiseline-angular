@@ -11,16 +11,15 @@ import { CruiseDTO } from '../../dto/cruiseDTO';
 })
 export class ProfileComponent implements OnInit {
 
-  cruises: Array<CruiseDTO> = [];
+  orders: Array<OrderDTO> = [];
 
   constructor(private orderService: OrderService,
-  private cruiseService: CruiseService) {
-    this.cruiseService.getUserCruises().subscribe(cruises => {
-      this.cruises = cruises;
-    })
-  }
+  private cruiseService: CruiseService) { }
 
   ngOnInit(): void {
+    this.orderService.getUserOrders().subscribe(orders => {
+      this.orders = orders;
+    })
   }
 
 }
