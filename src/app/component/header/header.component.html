@@ -7,6 +7,13 @@
           </span>
         </div>
         <div class="flex-grow-1 float-right">
+              <button class="btn dropdown-toggle no-dropdown-sign" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img width="30px;" class="mr-2" src="https://www.countryflags.io/{{getLocale()}}/flat/64.png">
+            </button>
+            <div class="dropdown-menu no-dropdown-sign" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item"><img width="30px;" class="mr-2" src="https://www.countryflags.io/ua/flat/64.png" (click)="setLocale('UA')"></a>
+              <a class="dropdown-item"><img width="30px;" class="mr-2" src="https://www.countryflags.io/gb/flat/64.png" (click)="setLocale('EN')"></a>
+            </div>
             <div *ngIf="isLoggedIn" ngbDropdown class="float-right">
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <a routerLink="/profile" class="float-left profile mr-2">Profile</a>
@@ -17,7 +24,7 @@
                 </button>
             </div>
             <div *ngIf="!isLoggedIn">
-                <a routerLink="/sign-up" class="float-right sign-up mr-2">Sign up</a>
+                <a routerLink="/sign-up" class="float-right sign-up mr-2">{{getLocalizedSignUp()}}</a>
                 <a routerLink="/login" class="float-right login mr-2">Login</a>
             </div>
         </div>

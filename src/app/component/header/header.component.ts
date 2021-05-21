@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/shared/auth.service';
+import { UserService } from '../../service/user/user.service';
+import { LocalizationService } from '../../service/localization/localization.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +13,26 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;
   username: string;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService,
+    private router: Router,
+    private userService: UserService,
+    private localizationService: LocalizationService) { }
+
+  getLocale() {
+    var locale = this.userService.getLocale();
+    if(locale === null){
+      this.setLocale('EN');
+    }
+    if (locale === 'EN') {
+      return 'GB';
+    }
+    return locale;
+  }
+
+  setLocale(locale: string) {
+    this.userService.setLocale(locale);
+    this.ngOnInit();
+  }
 
   ngOnInit() {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
@@ -31,4 +52,8 @@ export class HeaderComponent implements OnInit {
       window.location.reload();
     })
   }
+
+  getLocalizedSignUp(): string {
+   return this.localizationService.getSignUp();
+ }
 }

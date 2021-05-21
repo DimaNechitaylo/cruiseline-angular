@@ -16,4 +16,11 @@ export class UserService {
     return this.http.get<UserDTO>("http://localhost:8080/user/getByUsername?username=" + this.localStorage.retrieve("username"));
   }
 
+  getLocale(){
+    return this.localStorage.retrieve("locale");
+  }
+  setLocale(locale: string){
+    this.localStorage.store("locale", locale);
+  }
+
 }

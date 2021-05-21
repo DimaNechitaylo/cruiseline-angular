@@ -72,28 +72,3 @@
 .profile:hover{
     border: 1px solid;
 }
-
-.dropdown-item{
-    background-color: #f8f9fa;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.dropdown-item:hover{
-    background-color: #0079D3;
-}
-
-.dropdown-menu{
-    background-color: #f8f9fa;
-}
-
-.account-icon{
-    border-radius: 4px;
-    float: left;
-    margin-right: 5px;
-    max-height: 24px;
-    max-width: 24px;
-}
